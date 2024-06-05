@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import logo from '../assets/images/logoTutorBot.png'
+
 import { Typography } from '@mui/material'
 
 
@@ -43,14 +44,12 @@ const index = () => {
 
   return (
     <ContainerHome>
-      <Image src={logo} alt='logo tutor bot' />
+      <Image src={logo} alt='logo tutor bot'/>
       <Title>
         <Typography variant='h3' sx={{fontFamily: 'Lily Script One'}}>Tutor Bot</Typography>
       </Title>
       <ButtonHome>
         <Typography variant='h5'>Get Started</Typography>
-       
-
       </ButtonHome>
     </ContainerHome>
   )

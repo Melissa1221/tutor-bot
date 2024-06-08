@@ -1,50 +1,127 @@
-import React from 'react'
-import styled from 'styled-components';
-import userPhoto from '../assets/images/userPhoto.png';
+    import React from 'react';
+    import { styled } from '@mui/material/styles';
+    import { Box, Typography } from '@mui/material';
+    import userPhoto from '../assets/images/userPhoto.png';
+    import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+    import NotificationsIcon from '@mui/icons-material/Notifications';
+    import SettingsIcon from '@mui/icons-material/Settings';
+    import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+    import HeadphonesIcon from '@mui/icons-material/Headphones';
 
-const UserPhoto = styled('div')({
-    display: 'display',
-    width: '100%',
-    height:'30vh',
-    padding: '2rem',
-   
-})
-
-const Image = styled('img')({
-    objectFit: 'cover',
-    width: '70%',
-    height: 'auto'
-})
-
-const SidebarContainer = styled('div')({
-    display: 'flex',
-    justifyContent: 'center',
-    paddingTop: '0',
-    width: '20rem',
-    height: '100vh',
-    backgroundColor:'#fff'
-})
-
-const SidebarOptions = styled('div')({
-    background: 'rgb(158,165,235)',
-    background: 'linear-gradient(90deg, rgba(158,165,235,1) 0%, rgba(43,57,183,1) 56%, rgba(89,93,133,1) 100%)',
+    const SidebarContainer = styled('div')(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
+    width: '20%',
+    height: '100vh',
+    backgroundColor: theme.palette.background.paper,
+    alignItems: 'center',
+    fontFamily: 'Popins, sans-serif',
+    paddingLeft: '0',
+    margin: '0',
+    boxSizing: 'border-box',
+    }));
+
+    const UserPhoto = styled(Box)(({ theme }) => ({
+    width: '80%',
+    height: '10rem',
+    padding: theme.spacing(2, 0),
+    display: 'flex',
     justifyContent: 'center',
-    alignItems: 'flex-end',
+    }));
+
+    const Image = styled('img')({
+    width: '70%',
+    borderRadius: '50%',
+    });
+
+    const UserName = styled(Typography)({
+        color: '#fff',
+        fontSize: '1.7rem',
+        marginBottom: '20px',
+        width: '100%',
+        textAlign: 'left',
+        padding: '0px 3.5rem',
+        
+    });
+
+    const ActiveUserEmail = styled(Typography)({
+        color: '#fff',
+        fontSize: '1rem',
+        marginBottom: '1rem',
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        display: 'flex',
+        padding: '0px 10px',
+        flexDirection: 'row',
+        gap: '5px',
+
+    })
+
+    const Circle = styled(Box)({
+        width: '30px',
+        height: '30px',
+        borderRadius: '50%',
+        backgroundColor: '#50CE4D',
+        marginRight: '5px',
+        
+    })
+
+    const SidebarOptions = styled('div')({
+        background: 'rgb(168,174,227)',
+        background: 'linear-gradient(180deg, rgba(168,174,227,1) 0%, rgba(56,71,199,1) 56%, rgba(89,93,133,1) 100%)',
+    flexGrow: 1,
     width: '100%',
-    height: '70vh',
-})
+    boxSizing: 'border-box',
+    paddingTop: '20px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        paddingLeft: '1rem',
+        borderRadius: '30px 30px 0 0',
+        gap: '10px',
+        fontSize: '1.3rem',
+        margin: 0
+    });
 
-const SidebarUser = () => {
-  return (
-    <SidebarContainer>
-        <UserPhoto>
-            <Image src={userPhoto}/>
-        </UserPhoto>
+    const Option = styled(Box)(({ theme }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    alignContent: 'center',
+    padding: theme.spacing(1, 2.5),
+    color: 'white',
+    cursor: 'pointer',
+    '&:hover': {
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    },
+    }));
 
-    </SidebarContainer>
-  )
-}
+    const IconWrapper = styled(Box)({
+    marginRight: '10px',
+    display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    });
 
-export default SidebarUser
+    const SidebarUser = ({email}) => {
+    return (
+        <SidebarContainer>
+            <UserPhoto>
+                <Image src={userPhoto} alt="User Photo"/>
+            </UserPhoto>
+            <SidebarOptions>
+                <UserName>Ricardo</UserName>
+                <ActiveUserEmail><Circle/>{email}</ActiveUserEmail>
+                <Option><IconWrapper><LibraryBooksIcon /></IconWrapper>Resúmenes</Option>
+                <Option><IconWrapper><NotificationsIcon /></IconWrapper>Notificaciones</Option>
+                <Option><IconWrapper><SettingsIcon /></IconWrapper>Configuración</Option>
+                <Option><IconWrapper><HeadphonesIcon /></IconWrapper>Actividades</Option>
+                <Option><IconWrapper><ExitToAppIcon /></IconWrapper>Salir</Option>
+            </SidebarOptions>
+        </SidebarContainer>
+    )
+    }
+
+    export default SidebarUser;

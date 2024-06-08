@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 
-import Navbar from '../components/Navbar';
+import Navbar from '../components/NavbarEbooks';
 
 const ContainerEBookGrid = styled('a')({
   display: 'grid',

@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import styled from 'styled-components'
 import imageChatbot from '../assets/images/chatbotImage.png'
 import { Typography , Container, Button} from '@mui/material'
 import ChatbotInteraction from '../components/ChatbotInteraction'
+import Navbar from '../components/NavbarEbooks'
 
 const ContainerChatbotMenuPrincipal = styled('div')({
     display: 'flex',
@@ -14,6 +16,7 @@ const ContainerChatbotMenuPrincipal = styled('div')({
     backgroundColor: 'var(--secondary-color)',
     padding: '0',
     margin: '0',
+    
 })
 const Image = styled('img')({
   height: '40vmin',
@@ -25,32 +28,29 @@ const LogoDiv = styled(Container)({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  width: '100%',
+  width: '50%',
   alignSelf: 'center',
+  overflow: 'hidden',
+  boxSizing: 'border-box'
 //  backgroundColor: 'var(--secondary-color)',
 })
 
-const ButtonHome = styled('button')({
-    // backgroundColor: 'var(--primary-color)',
-    
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignContent: 'center',
-    
-  })
+
 
 const Chatbot = () => {
   return (
     <>
-        <ContainerChatbotMenuPrincipal>
-            <LogoDiv>
-                <Image src={imageChatbot} alt='logo tutor bot'/>
-                <Typography variant='h3' sx={{fontFamily: 'Lily Script One'}}>Tutor Bot</Typography>
-                
-            </LogoDiv>
-            <ChatbotInteraction />
-        </ContainerChatbotMenuPrincipal>
+    <div style={{display:'flex', flexDirection: 'column'}}>
+      <ContainerChatbotMenuPrincipal>
+              <LogoDiv>
+                  <Navbar page='Regresar' route='/principalmenu'/>
+                  <Image src={imageChatbot} alt='logo tutor bot'/>
+                  <Typography variant='h3' sx={{fontFamily: 'Lily Script One'}}>Tutor Bot</Typography>
+                  <Navbar page='Regresar' route='/principalmenu'/>
+              </LogoDiv>
+              <ChatbotInteraction />
+          </ContainerChatbotMenuPrincipal>    
+    </div>  
     </>
   )
 }

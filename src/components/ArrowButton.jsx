@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Button, SvgIcon, styled } from '@mui/material';
 
@@ -7,7 +9,7 @@ const ArrowIcon = ({ direction, ...props }) => (
   </SvgIcon>
 );
 
-const CustomButton = styled(Button)(({ theme, direction }) => ({
+const CustomButton = styled(Button)(({ direction }) => ({
   background: 'linear-gradient(90deg, rgba(245, 146, 146, 1) 0%, rgba(88, 68, 68, 1) 100%)',
   borderRadius: direction === 'left' ? '10px 0 0 10px' : '0 10px 10px 0',
   minWidth: '48px',

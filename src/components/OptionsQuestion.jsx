@@ -1,5 +1,7 @@
-import React from 'react';
-import { Box, Typography, Radio, FormControlLabel, FormGroup, Paper, RadioGroup } from '@mui/material';
+/* eslint-disable no-dupe-keys */
+/* eslint-disable react/prop-types */
+
+import {  Radio, FormControlLabel, Paper, RadioGroup } from '@mui/material';
 
 
 const OptionsQuestion = ({ questions, selectedAnswer, onAnswerChange }) => {

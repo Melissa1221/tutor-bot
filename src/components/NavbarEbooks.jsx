@@ -1,7 +1,9 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
+
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { AppBar, Typography } from '@mui/material';
-const Navbar = () => {
+import { Link } from 'react-router-dom';
+const Navbar = ({page, route}) => {
   return (
     <AppBar 
     sx={{display:'flex',
@@ -10,12 +12,18 @@ const Navbar = () => {
         alignItems:'center'
         ,padding:'20px',   
         gap: '20px',
-        backgroundColor:'var(--secondary-color)',
+        // backgroundColor: backgroundColor ? backgroundColor : 'var(--secondary-color)',
+        backgroundColor:'transparent',
         boxShadow: 'none',
+        
     }}
+
     >
+        <Link to = {route} style={{textDecoration:'none'}}>
         <ArrowBackIcon/>
-        <Typography variant='h5'>eBooks</Typography>
+      </Link>
+        
+        <Typography variant='h5'>{page}</Typography>
     </AppBar>
   )
 }

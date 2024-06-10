@@ -1,4 +1,5 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
+
 import styled from 'styled-components'
 import { Box, Typography } from '@mui/material'
 
@@ -13,7 +14,7 @@ const CustomBox = styled(Box)({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    borderRadius: '10px',
+    
     textAlign: 'left',
 })
 const Question = ({question}) => {

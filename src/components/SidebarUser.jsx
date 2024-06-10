@@ -1,4 +1,7 @@
-    import React from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-dupe-keys */
+  
     import { styled } from '@mui/material/styles';
     import { Box, Typography } from '@mui/material';
     import userPhoto from '../assets/images/userPhoto.png';
@@ -7,6 +10,8 @@
     import SettingsIcon from '@mui/icons-material/Settings';
     import ExitToAppIcon from '@mui/icons-material/ExitToApp';
     import HeadphonesIcon from '@mui/icons-material/Headphones';
+    import { createTheme } from '@mui/system';
+import { Link } from 'react-router-dom';
 
     const SidebarContainer = styled('div')(({ theme }) => ({
     display: 'flex',
@@ -105,20 +110,20 @@
         justifyContent: 'center',
     });
 
-    const SidebarUser = ({email}) => {
+    const SidebarUser = ({name, email}) => {
     return (
         <SidebarContainer>
             <UserPhoto>
                 <Image src={userPhoto} alt="User Photo"/>
             </UserPhoto>
             <SidebarOptions>
-                <UserName>Ricardo</UserName>
+                <UserName>{name}</UserName>
                 <ActiveUserEmail><Circle/>{email}</ActiveUserEmail>
                 <Option><IconWrapper><LibraryBooksIcon /></IconWrapper>Resúmenes</Option>
                 <Option><IconWrapper><NotificationsIcon /></IconWrapper>Notificaciones</Option>
                 <Option><IconWrapper><SettingsIcon /></IconWrapper>Configuración</Option>
                 <Option><IconWrapper><HeadphonesIcon /></IconWrapper>Actividades</Option>
-                <Option><IconWrapper><ExitToAppIcon /></IconWrapper>Salir</Option>
+                <Link to='/'><Option><IconWrapper><ExitToAppIcon /></IconWrapper>Salir</Option></Link>
             </SidebarOptions>
         </SidebarContainer>
     )

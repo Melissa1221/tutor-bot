@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from 'react';
 import { Typography, Box } from '@mui/material';
 
 const TimerQuiz = ({ initialTime, onTimeUp }) => {

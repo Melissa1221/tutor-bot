@@ -1,5 +1,6 @@
-import React from 'react';
-import { Button, SvgIcon, styled } from '@mui/material';
+/* eslint-disable react/prop-types */
+
+import { Button,  styled } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 

@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { Box, Container, Typography } from '@mui/material'
 import { useState } from 'react'
 import React from 'react'
@@ -10,6 +12,7 @@ import BackButton from '../components/BackButton'
 import ForwardButton from '../components/ForwardButton'
 import ProgressIndicator from '../components/ProgressIndicator'
 import CircularWithValueLabel from '../components/CircularProgressWithLabel'
+import Navbar from '../components/NavbarEbooks'
 
 
 const ContainerQuizMenuPrincipal = styled('div')({
@@ -60,6 +63,7 @@ const LogoDiv = styled(Container)({
     alignItems: 'center',
     width: '80%',
   })
+
 const Quiz = ({title}) => {
     const [questions] = useState([
         { text: 'Un bucle que se repite indefinidamente' },
@@ -90,6 +94,8 @@ const Quiz = ({title}) => {
   return (
     <ContainerQuizMenuPrincipal>
         <LogoDiv>
+          
+            <Navbar page='Regresar' route='/principalmenu'/>
             <Image src={imageChatbot} alt='logo tutor bot'/>
             <Typography variant='h3' sx={{fontFamily: 'Lily Script One'}}>Tutor Bot</Typography>
             <TimerQuiz initialTime={60} onTimeUp={handleTimeUp} />

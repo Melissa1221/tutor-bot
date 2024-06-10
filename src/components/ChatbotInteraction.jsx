@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Box, Container } from '@mui/material';
+/* eslint-disable no-undef */
+import { useState } from 'react';
+import { Container } from '@mui/material';
 import styled from 'styled-components';
 import BotMessage from './BotMessage';
 import UserMessage from './UserMessage';

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import styled from 'styled-components';
 
 import Navbar from '../components/NavbarEbooks';
@@ -21,7 +21,7 @@ const ContainerEbook = styled('div')({
   backgroundColor: 'var(--secondary-color)',
   width: '100vw',
   height: '100vh',
-  marginTop: '1rem'
+  
 })
 
 const Image = styled('img')({
@@ -30,7 +30,7 @@ const Image = styled('img')({
 const EBook = () => {
   return (
     <ContainerEbook>
-      <Navbar/>
+      <Navbar page='Regresar' route="/principalmenu"/>
       <ContainerEBookGrid>
         <a href=''>
         <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" />

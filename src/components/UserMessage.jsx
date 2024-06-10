@@ -1,6 +1,7 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+
 import styled from 'styled-components';
-import PersonIcon from '@mui/icons-material/Person';
+
 import userIcon from '../assets/images/userPhoto.png';
 import { Avatar } from '@mui/material';
 const UserMessageContainer = styled('div')({

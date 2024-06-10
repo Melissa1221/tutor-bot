@@ -1,7 +1,8 @@
-import React from 'react'
+/* eslint-disable react-refresh/only-export-components */
+
 import styled from 'styled-components'
 import logo from '../assets/images/logoTutorBot.png'
-
+import { Link } from 'react-router-dom';
 import { Typography } from '@mui/material'
 
 
@@ -48,9 +49,12 @@ const index = () => {
       <Title>
         <Typography variant='h3' sx={{fontFamily: 'Lily Script One'}}>Tutor Bot</Typography>
       </Title>
-      <ButtonHome>
+      <Link to = "/principalmenu">
+      <ButtonHome >
         <Typography variant='h5'>Get Started</Typography>
       </ButtonHome>
+      </Link>
+      
     </ContainerHome>
   )
 }

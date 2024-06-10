@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Button, SvgIcon, styled } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';

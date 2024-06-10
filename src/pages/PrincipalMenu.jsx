@@ -1,7 +1,8 @@
-import React from 'react'
+
+import PrincipalMenuOptions from '../components/PrincipalMenuOptions'
 import SidebarUser from '../components/SidebarUser'
 import styled from 'styled-components'
-import { Container } from '@mui/material'
+
 
 const ContainerMenuPrincipal = styled('div')({
     display: 'flex',
@@ -13,16 +14,13 @@ const ContainerMenuPrincipal = styled('div')({
     padding: '0',
     margin: '0',
 })
-const Image = styled('img')({
-    height: '40vmin',
-    pointerEvents: 'visibleFill',
 
-})
 const PrincipalMenu = () => {
   return (
     <>
         <ContainerMenuPrincipal>
-            <SidebarUser email='ricardo.ulloa.v@uni.pe'/>
+            <SidebarUser email='ricardo.ulloa.v@uni.pe' name='Ricardo'/>
+            <PrincipalMenuOptions/>
         </ContainerMenuPrincipal>
     </>
     

@@ -2,6 +2,7 @@
 import  { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
+import Navbar from '../components/NavbarEbooks';
 const ContainerQuizMenuPrincipal = styled('div')({
     display: 'flex',
     flexDirection: 'row',
@@ -113,6 +114,8 @@ const CreateQuiz = () => {
   return (
     <ContainerQuizMenuPrincipal>
         <CustomContainer>
+        <Navbar page='Regresar' route="/principalmenu"/>
+      
             <h1>Crear Quiz</h1>
             <h2>Ingresa el tema principal</h2>
             <InputStyled

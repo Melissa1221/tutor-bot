@@ -2,7 +2,6 @@
 import  { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
-import axios from 'axios';
 const ContainerQuizMenuPrincipal = styled('div')({
     display: 'flex',
     flexDirection: 'row',
@@ -63,35 +62,53 @@ const CreateQuiz = () => {
     setTema(event.target.value);
   };
 
-//   const handleSubmit = async () => {
-//     try {
-//       const response = await fetch('http://127.0.0.1:8000/items', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({ tema }),
-//       });
-
-//       if (response.ok) {
-//         const data = await response.json();
-//         console.log('Quiz creado:', data);
-//       } else {
-//         console.error('Error al crear el quiz');
-//       }
-//     } catch (error) {
-//       console.error('Error:', error);
-//     }
-//   };
-const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     try {
-      const response = await axios.post('192.168.0.102/items/', { "hola" : "hola" });
-      console.log('Mensaje enviado:', response.data);
+      const response = await fetch('http://192.168.0.102:8000/items/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ content : tema }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Quiz creado:', data);
+      } else {
+        console.error('Error al crear el quiz');
+      }
     } catch (error) {
-      console.error('Error al enviar el mensaje:', error);
+      console.error('Error:', error);
     }
   };
+// const handleSubmit = async (event) => {
+//     event.preventDefault();
+//     try {
+//       const response = await axios.post('http://192.168.0.102:8000/items/', { "hola" : "hola" }, 
+//         {
+//             headers: {
+//               Origin: 'http://192.168.0.100:3000' // Replace with your frontend URL
+//             }
+//           }
+//       );
+//       console.log('Mensaje enviado:', response.data);
+//     } catch (error) {
+//       console.error('Error al enviar el mensaje:', error);
+//     }
+//   };
+
+// const handleSubmit = async () => {
+//     const res = await fetch("http://192.168.0.102:8000/items/", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: "hola",
+//     });
+//     const data = await res.json();
+//     // setResponse(data.message);
+//   };
 
   return (
     <ContainerQuizMenuPrincipal>

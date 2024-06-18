@@ -5,6 +5,8 @@ import EBook from './pages/EBook';
 import PrincipalMenu from './pages/PrincipalMenu';
 import Chatbot from './pages/Chatbot';
 import Quiz from './pages/Quiz';
+import Historial from './pages/Historial';
+import CreateQuiz from './pages/CreateQuiz';
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
         <Route path="/principalmenu" element={<PrincipalMenu />} />
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/quiz" element={<Quiz />} />
+        <Route path='/history' element={<Historial />} />
+        <Route path = '/createquiz' element = {<CreateQuiz/>}/>
       </Routes>
     </Router>
   );

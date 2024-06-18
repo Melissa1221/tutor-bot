@@ -7,6 +7,7 @@ const ButtonStyled = styled('button')({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    color:'#fff'
 })
 
 
@@ -43,7 +44,7 @@ const PrincipalMenuOptions = () => {
             <Link to='/chatbot'>
                 <ButtonStyled>Chatbot y asistente de voz</ButtonStyled>
             </Link>
-            <Link to='/quiz'>
+            <Link to='/createquiz'>
                 <ButtonStyled>Prueba tu conocimiento</ButtonStyled>
             </Link>
           

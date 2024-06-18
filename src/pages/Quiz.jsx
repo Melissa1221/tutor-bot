@@ -63,8 +63,7 @@ const LogoDiv = styled(Container)({
     alignItems: 'center',
     width: '80%',
   })
-
-const Quiz = ({title}) => {
+const Quiz = () => {
     const [questions] = useState([
         { text: 'Un bucle que se repite indefinidamente' },
         { text: 'Una función que llama a sí misma' },
@@ -103,7 +102,7 @@ const Quiz = ({title}) => {
             <CircularWithValueLabel value={progress} />
         </LogoDiv>
         <CustomContainer>
-            <Typography variant='h4'>{title}</Typography>
+            
             <Question question='¿Qué es la recursividad?' />
             <OptionsQuestion
                 questions={questions}

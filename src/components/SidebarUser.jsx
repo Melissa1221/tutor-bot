@@ -119,7 +119,8 @@ import { Link } from 'react-router-dom';
             <SidebarOptions>
                 <UserName>{name}</UserName>
                 <ActiveUserEmail><Circle/>{email}</ActiveUserEmail>
-                <Option><IconWrapper><LibraryBooksIcon /></IconWrapper>Resúmenes</Option>
+                <Link to='/history'><Option><IconWrapper><LibraryBooksIcon /></IconWrapper>Historial</Option></Link>
+                
                 <Option><IconWrapper><NotificationsIcon /></IconWrapper>Notificaciones</Option>
                 <Option><IconWrapper><SettingsIcon /></IconWrapper>Configuración</Option>
                 <Option><IconWrapper><HeadphonesIcon /></IconWrapper>Actividades</Option>

@@ -1,18 +1,17 @@
-// import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import CardHistotial from '../components/CardHistotial';
 import Navbar from '../components/NavbarEbooks';
-import axios from 'axios'
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const ContainerCustom = styled('div')({
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    height: '100vh',
+    height: '100%',
     width: '100vw',
     backgroundColor: 'var(--secondary-color)',
-    padding: '0',
+    paddingTop: '5rem',
     margin: '0',
 });
 
@@ -22,17 +21,22 @@ const HistorialContent = styled('div')({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100vh',
-    width: '100vw',
+    width: '100%',
     backgroundColor: 'var(--secondary-color)',
-    padding: '0',
+    padding: '5rem',
     margin: '0',
     gap: '20px',
 });
 
+const GridContainer = styled('div')({
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '20px',
+    width: '80%',
+});
+
 const Historial = () => {
-    //const location = useLocation();
     const [questionnaires, setQuestionaries] = useState([]);
-    //const { topic, score } = location.state || { topic: 'Sin tema', score: 0 };
 
     useEffect(() => {
         const fetchQuestionnaires = async () => {
@@ -50,20 +54,18 @@ const Historial = () => {
         };
 
         fetchQuestionnaires();
-    }, [])
-
+    }, []);
 
     return (
         <ContainerCustom>
             <HistorialContent>
                 <Navbar page='Regresar' route='/principalmenu' />
                 <h2>Exámenes recientes</h2>
-                {questionnaires.map((questionnaire) => {
-                    return (
-                       <CardHistotial key={questionnaire.id} topic={questionnaire.title} score={questionnaire.score} />
-                    )
-                })}
-                
+                <GridContainer>
+                    {questionnaires.map((questionnaire) => (
+                        <CardHistotial key={questionnaire.id} topic={questionnaire.title} score={questionnaire.score} />
+                    ))}
+                </GridContainer>
             </HistorialContent>
         </ContainerCustom>
     );

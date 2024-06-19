@@ -1,6 +1,7 @@
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Navbar from '../components/NavbarEbooks';
+import { Button } from '@mui/material';
 
 const ContainerQuizMenuPrincipal = styled('div')({
     display: 'flex',
@@ -46,7 +47,7 @@ const FinalScoreDiv = styled('div')({
 
 const Score = () => {
     const location = useLocation();
-    const { grade } = location.state || { grade: 0 }; // Default to 0 if grade is not provided
+    const { score } = location.state || { score: 0 }; // Default to 0 if score is not provided
 
     return (
         <ContainerQuizMenuPrincipal>
@@ -54,8 +55,11 @@ const Score = () => {
             <ScoreQuizDiv>
                 <h1>Resultado obtenido</h1>
                 <FinalScoreDiv>
-                    <h2>Calificación: {grade}</h2>
+                    <h2>Calificación: {score}</h2>
                 </FinalScoreDiv>
+                <Link to='/history'>
+                    <Button variant='contained' color='primary'>Ver pruebas anteriores</Button>
+                </Link>
             </ScoreQuizDiv>
         </ContainerQuizMenuPrincipal>
     );

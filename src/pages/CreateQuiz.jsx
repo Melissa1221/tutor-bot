@@ -99,7 +99,7 @@ const CreateQuiz = () => {
             <CustomContainer>
                 <Navbar page='Regresar' route="/principalmenu" />
                 <h1>Crear Quiz</h1>
-                <h2>Ingresa el topic principal</h2>
+                <h2>Ingresa el tema principal</h2>
                 <InputStyled
                     placeholder='topic'
                     value={topic}

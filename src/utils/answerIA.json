@@ -1,0 +1,52 @@
+[
+    {
+        "question": "¿Cuál es el resultado de ejecutar el siguiente código en Java?",
+        "options": [
+            "a) Output: Hello World!",
+            "b) Output: Hello",
+            "c) Output: World!",
+            "d) Output: Error"
+        ],
+        "answer": 0
+    },
+    {
+        "question": "¿Qué tipo de variable existe en Java y puede tener cualquier valor entre entre dos valores definidos?",
+        "options": [
+            "a) Integer",
+            "b) Float",
+            "c) String",
+            "d) Enum"
+        ],
+        "answer": 3
+    },
+    {
+        "question": "¿Cuál es el método que se utiliza para arreglar un arreglo en Java?",
+        "options": [
+            "a) sort()",
+            "b) reverse()",
+            "c) shuffle()",
+            "d) forEach()"
+        ],
+        "answer": 0
+    },
+    {
+        "question": "¿Qué es un método en Java?",
+        "options": [
+            "a) Un conjunto de comandos para ejecutar en el terminal",
+            "b) Un conjunto de sentencias para realizar una tarea",
+            "c) Un block de código que se puede llamar varias veces",
+            "d) Un ciclo iterativo"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "¿Qué es un booleano en Java?",
+        "options": [
+            "a) Un tipo de dato numérico",
+            "b) Un tipo de dato de texto",
+            "c) Un tipo de dato lógico",
+            "d) Un tipo de dato de fecha"
+        ],
+        "answer": 2
+    }
+]

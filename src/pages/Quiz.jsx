@@ -75,7 +75,6 @@ const Quiz = () => {
         }
     ], questionnaire_id: 1};
 
-
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [userAnswers, setUserAnswers] = useState([]);
     const [timeUp, setTimeUp] = useState(false);
@@ -115,7 +114,7 @@ const Quiz = () => {
         }
     };
 
-    const submitAnswers =  useCallback(async () => {
+    const submitAnswers = useCallback(async () => {
         const score = calculateGrade(questions, userAnswers);
         
         try {
@@ -129,14 +128,14 @@ const Quiz = () => {
 
             if (response.status === 200) {
                 console.log('Quiz creado:', response.data);
-                navigate('/history');
+                navigate('/score', { state: { score, topic } }); // Aquí se pasa "score" y "topic"
             } else {
                 console.error('Error al crear el quiz');
             }
         } catch (error) {
             console.error('Error:', error);
         }        
-    });
+    }, [navigate, questionnaire_id, questions, topic, userAnswers]);
 
     useEffect(() => {
         setProgress(((currentQuestion + 1) / questions.length) * 100);

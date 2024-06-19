@@ -60,12 +60,12 @@ const InputStyled = styled('input')({
 });
 
 const CreateQuiz = () => {
-    const [tema, setTema] = useState('');
+    const [topic, settopic] = useState('');
     const [numPreguntas, setNumPreguntas] = useState('');
     const navigate = useNavigate();
 
-    const handleTemaChange = (event) => {
-        setTema(event.target.value);
+    const handletopicChange = (event) => {
+        settopic(event.target.value);
     };
 
     const handleNumPreguntasChange = (event) => {
@@ -74,9 +74,9 @@ const CreateQuiz = () => {
 
     const handleSubmit = async () => {
         try {
-            const response = await axios.post('http://192.168.0.102:8000/items/', {
-                content: tema,
-                numPreguntas: parseInt(numPreguntas)
+            const response = await axios.post(`${import.meta.env.VITE_REACT_API_URL}/api/v1/questionnaires/create`, {
+                topic: topic,
+                num_preg: parseInt(numPreguntas)
             }, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ const CreateQuiz = () => {
 
             if (response.status === 200) {
                 console.log('Quiz creado:', response.data);
-                navigate('/quiz', { state: { tema } });
+                navigate('/quiz', { state: { topic, questions: JSON.parse(response.data.res), questionnaire_id: response.data.id } });
             } else {
                 console.error('Error al crear el quiz');
             }
@@ -99,11 +99,11 @@ const CreateQuiz = () => {
             <CustomContainer>
                 <Navbar page='Regresar' route="/principalmenu" />
                 <h1>Crear Quiz</h1>
-                <h2>Ingresa el tema principal</h2>
+                <h2>Ingresa el topic principal</h2>
                 <InputStyled
-                    placeholder='Tema'
-                    value={tema}
-                    onChange={handleTemaChange}
+                    placeholder='topic'
+                    value={topic}
+                    onChange={handletopicChange}
                 />
                 <h2>Ingresa el número de preguntas</h2>
                 <InputStyled

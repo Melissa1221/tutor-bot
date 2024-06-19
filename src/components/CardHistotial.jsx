@@ -13,16 +13,16 @@ const CardCustom = styled(Card)({
     alignItems: 'center',
     gap: '1rem'
 })
-const CardHistotial = ({tema, score}) => {
+const CardHistotial = ({topic, score}) => {
 CardHistotial.propTypes = {
-  tema: PropTypes.string.isRequired,
+  topic: PropTypes.string.isRequired,
   score: PropTypes.string.isRequired,
 };
 
   return (
     <CardCustom>
         <QuizIcon sx={{fontSize: '40px'}}/>
-        <h3>{tema}</h3>
+        <h3>{topic}</h3>
         <h3>{score}</h3>
     </CardCustom>
   )

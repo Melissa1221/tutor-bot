@@ -39,12 +39,10 @@ const CustomContainer = styled(Container)({
 const ChatbotInteraction = () => {
   const [messages, setMessages] = useState([
     { type: 'bot', text: 'Bienvenido al chat en vivo de Tutobot! Mi nombre es Tutobot bot. En qué puedo servirte el día de hoy? Coméntame de cuáles temas quieres un resumen el día de hoy.' },
-    { type: 'user', text: 'Muy buenas tardes, quisiera saber el resumen sobre los lenguajes de programación.' },
-    { type: 'bot', text: 'JavaScript, HTML, CSS, Python, SQL, Java... Ahora que tienes información sobre los lenguajes de programación más populares en 2023, aquí se te proporciona algunos ejemplos.' }
   ]);
 
-  const handleSendMessage = (message) => {
-    setMessages([...messages, { type: 'user', text: message }]);
+  const handleSendMessage = (...output) => {
+    setMessages([...messages, ...output]);
     // Aquí puedes añadir la lógica para enviar el mensaje a la IA y recibir la respuesta
   };
 

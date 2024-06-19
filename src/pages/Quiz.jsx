@@ -14,6 +14,7 @@ import ForwardButton from '../components/ForwardButton';
 import CircularProgressWithLabel from '../components/CircularProgressWithLabel';
 import Navbar from '../components/NavbarEbooks';
 import { calculateGrade } from '../utils/score';
+import axios from 'axios'
 
 const ContainerQuizMenuPrincipal = styled('div')({
     display: 'flex',
@@ -66,34 +67,14 @@ const ButtonDiv = styled(Box)({
 const Quiz = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { tema } = location.state || { tema: 'Quiz' }; // Default to 'Quiz' if tema is not provided
-    const [questions] = useState([
+    const { topic, questions, questionnaire_id } = location.state || { topic: 'Quiz', questions: [
         {
-            question: '¿Cuál es el resultado de ejecutar el siguiente código en Java?',
-            options: ['a) Output: Hello World!', 'b) Output: Hello', 'c) Output: World!', 'd) Output: Error'],
+            question: '¿Qué es primero, el huevo o la gallina?',
+            options: ['a) Huevo', 'b) Gallina'],
             answer: 0
-        },
-        {
-            question: '¿Qué tipo de variable existe en Java y puede tener cualquier valor entre entre dos valores definidos?',
-            options: ['a) Integer', 'b) Float', 'c) String', 'd) Enum'],
-            answer: 3
-        },
-        {
-            question: '¿Cuál es el método que se utiliza para arreglar un arreglo en Java?',
-            options: ['a) sort()', 'b) reverse()', 'c) shuffle()', 'd) forEach()'],
-            answer: 0
-        },
-        {
-            question: '¿Qué es un método en Java?',
-            options: ['a) Un conjunto de comandos para ejecutar en el terminal', 'b) Un conjunto de sentencias para realizar una tarea', 'c) Un block de código que se puede llamar varias veces', 'd) Un ciclo iterativo'],
-            answer: 2
-        },
-        {
-            question: '¿Qué es un booleano en Java?',
-            options: ['a) Un tipo de dato numérico', 'b) Un tipo de dato de texto', 'c) Un tipo de dato lógico', 'd) Un tipo de dato de fecha'],
-            answer: 2
         }
-    ]);
+    ], questionnaire_id: 1};
+
 
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [userAnswers, setUserAnswers] = useState([]);
@@ -134,10 +115,27 @@ const Quiz = () => {
         }
     };
 
-    const submitAnswers = useCallback(() => {
-        const grade = calculateGrade(questions, userAnswers);
-        console.log(`Tema: ${tema}, Calificación: ${grade}`); // Log para depuración
-        navigate('/history', { state: { tema, grade } });
+    const submitAnswers =  useCallback(async () => {
+        const score = calculateGrade(questions, userAnswers);
+        
+        try {
+            const response = await axios.post(`http://localhost:8000/api/v1/questionnaires/${questionnaire_id}/score`, {
+                score: score
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            if (response.status === 200) {
+                console.log('Quiz creado:', response.data);
+                navigate('/history');
+            } else {
+                console.error('Error al crear el quiz');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }        
     });
 
     useEffect(() => {
@@ -155,7 +153,7 @@ const Quiz = () => {
             <LogoDiv>
                 <Navbar page='Regresar' route='/principalmenu' />
                 <Image src={imageChatbot} alt='logo tutor bot' />
-                <Typography variant='h3' sx={{ fontFamily: 'Lily Script One' }}>{tema}</Typography>
+                <Typography variant='h3' sx={{ fontFamily: 'Lily Script One' }}>{topic}</Typography>
                 <TimerQuiz initialTime={60} onTimeUp={handleTimeUp} />
                 <CircularProgressWithLabel value={progress} />
             </LogoDiv>

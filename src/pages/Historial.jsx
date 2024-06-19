@@ -1,7 +1,9 @@
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import CardHistotial from '../components/CardHistotial';
 import Navbar from '../components/NavbarEbooks';
+import axios from 'axios'
+import { useEffect, useState } from 'react';
 
 const ContainerCustom = styled('div')({
     display: 'flex',
@@ -28,15 +30,40 @@ const HistorialContent = styled('div')({
 });
 
 const Historial = () => {
-    const location = useLocation();
-    const { tema, grade } = location.state || { tema: 'Sin tema', grade: 0 };
+    //const location = useLocation();
+    const [questionnaires, setQuestionaries] = useState([]);
+    //const { topic, score } = location.state || { topic: 'Sin tema', score: 0 };
+
+    useEffect(() => {
+        const fetchQuestionnaires = async () => {
+            try {
+                const response = await axios.get('http://localhost:8000/api/v1/questionnaires/all/1');
+
+                if (response.status === 200) {
+                    setQuestionaries(response.data.questionnaires);
+                } else {
+                    console.error('Error al obtener los cuestionarios');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+        fetchQuestionnaires();
+    }, [])
+
 
     return (
         <ContainerCustom>
             <HistorialContent>
                 <Navbar page='Regresar' route='/principalmenu' />
                 <h2>Exámenes recientes</h2>
-                <CardHistotial tema={tema} score={grade} />
+                {questionnaires.map((questionnaire) => {
+                    return (
+                       <CardHistotial key={questionnaire.id} topic={questionnaire.title} score={questionnaire.score} />
+                    )
+                })}
+                
             </HistorialContent>
         </ContainerCustom>
     );

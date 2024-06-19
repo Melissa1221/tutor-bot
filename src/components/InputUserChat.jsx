@@ -2,6 +2,7 @@
 import  { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const InputContainer = styled('div')({
     display: 'flex',
@@ -23,10 +24,29 @@ const InputContainer = styled('div')({
 const InputUserChat = ({ onSendMessage }) => {
   const [newMessage, setNewMessage] = useState('');
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (newMessage.trim()) {
-      onSendMessage(newMessage);
       setNewMessage('');
+      try {
+        const response = await axios.post('http://localhost:8000/api/v1/bot/ask', {
+           question: newMessage
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        if (response.status === 200) {
+            console.log('Respuesta recibida:', response.data);
+            onSendMessage({type:'user', text: newMessage}, {type:'bot', text: response.data.res})
+        } else {
+            onSendMessage({type:'user', text: newMessage})
+            console.error('Error al crear el quiz');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+      
     }
   };
 

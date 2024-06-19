@@ -48,7 +48,7 @@ const Chatbot = () => {
                   <Navbar page='Regresar' route='/principalmenu'/>
                   <Image src={imageChatbot} alt='logo tutor bot'/>
                   <Typography variant='h3' sx={{fontFamily: 'Lily Script One'}}>Tutor Bot</Typography>
-                  <Navbar page='Regresar' route='/principalmenu'/>
+                  
               </LogoDiv>
               <ChatbotInteraction />
           </ContainerChatbotMenuPrincipal>    

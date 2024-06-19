@@ -8,6 +8,7 @@ import Quiz from './pages/Quiz';
 import Historial from './pages/Historial';
 import CreateQuiz from './pages/CreateQuiz';
 import Score from './pages/Score';
+import Login from './pages/Login';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/history' element={<Historial />} />
         <Route path = '/createquiz' element = {<CreateQuiz/>}/>
         <Route path = '/score' element = {<Score/>}/>
+        <Route path = '/login' element = {<Login/>}/>
       </Routes>
     </Router>
   );

@@ -1,8 +1,10 @@
 /* eslint-disable no-undef */
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled from "styled-components";
+import styled from 'styled-components';
+import axios from 'axios';
 import Navbar from '../components/NavbarEbooks';
+
 const ContainerQuizMenuPrincipal = styled('div')({
     display: 'flex',
     flexDirection: 'row',
@@ -14,6 +16,7 @@ const ContainerQuizMenuPrincipal = styled('div')({
     padding: '0',
     margin: '0',
 });
+
 const CustomContainer = styled('div')({
     display: 'flex',
     flexDirection: 'column',
@@ -35,6 +38,7 @@ const ButtonStyled = styled('button')({
     justifyContent: 'center',
     alignItems: 'center',
 });
+
 const InputStyled = styled('input')({
     backgroundColor: '#fff',
     display: 'flex',
@@ -50,90 +54,68 @@ const InputStyled = styled('input')({
     fontSize: '1rem',
     textAlign: 'center',
     '&::placeholder': {
-    color: '#fff',
-    fontSize: '1rem',
-    textAlign: 'center',
+        color: '#fff',
+        fontSize: '1rem',
+        textAlign: 'center',
     }
 });
 
 const CreateQuiz = () => {
-  const [tema, setTema] = useState('');
+    const [tema, setTema] = useState('');
+    const [numPreguntas, setNumPreguntas] = useState('');
 
-  const handleInputChange = (event) => {
-    setTema(event.target.value);
-  };
+    const handleTemaChange = (event) => {
+        setTema(event.target.value);
+    };
 
-  const handleSubmit = async () => {
-    try {
-      const response = await fetch('http://192.168.0.102:8000/items/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ content : tema }),
-      });
+    const handleNumPreguntasChange = (event) => {
+        setNumPreguntas(event.target.value);
+    };
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Quiz creado:', data);
-      } else {
-        console.error('Error al crear el quiz');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-// const handleSubmit = async (event) => {
-//     event.preventDefault();
-//     try {
-//       const response = await axios.post('http://192.168.0.102:8000/items/', { "hola" : "hola" }, 
-//         {
-//             headers: {
-//               Origin: 'http://192.168.0.100:3000' // Replace with your frontend URL
-//             }
-//           }
-//       );
-//       console.log('Mensaje enviado:', response.data);
-//     } catch (error) {
-//       console.error('Error al enviar el mensaje:', error);
-//     }
-//   };
+    const handleSubmit = async () => {
+        try {
+            const response = await axios.post('http://192.168.0.102:8000/items/', {
+                content: tema,
+                numPreguntas: parseInt(numPreguntas)
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
 
-// const handleSubmit = async () => {
-//     const res = await fetch("http://192.168.0.102:8000/items/", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: "hola",
-//     });
-//     const data = await res.json();
-//     // setResponse(data.message);
-//   };
+            if (response.status === 200) {
+                console.log('Quiz creado:', response.data);
+            } else {
+                console.error('Error al crear el quiz');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
-  return (
-    <ContainerQuizMenuPrincipal>
-        <CustomContainer>
-        <Navbar page='Regresar' route="/principalmenu"/>
-      
-            <h1>Crear Quiz</h1>
-            <h2>Ingresa el tema principal</h2>
-            <InputStyled
-              placeholder='Tema'
-              value={tema}
-              onChange={handleInputChange}
-            />
-            <h2>Ingresa el número de preguntas</h2>
-            <InputStyled
-              placeholder='Número de preguntas'
-            />
-            <Link to='/quiz'>
-                <ButtonStyled onClick={handleSubmit}>Crear Quiz</ButtonStyled>
-            </Link>
-            
-        </CustomContainer>
-    </ContainerQuizMenuPrincipal>
-  );
+    return (
+        <ContainerQuizMenuPrincipal>
+            <CustomContainer>
+                <Navbar page='Regresar' route="/principalmenu" />
+                <h1>Crear Quiz</h1>
+                <h2>Ingresa el tema principal</h2>
+                <InputStyled
+                    placeholder='Tema'
+                    value={tema}
+                    onChange={handleTemaChange}
+                />
+                <h2>Ingresa el número de preguntas</h2>
+                <InputStyled
+                    placeholder='Número de preguntas'
+                    value={numPreguntas}
+                    onChange={handleNumPreguntasChange}
+                />
+                <Link to='/quiz'>
+                    <ButtonStyled onClick={handleSubmit}>Crear Quiz</ButtonStyled>
+                </Link>
+            </CustomContainer>
+        </ContainerQuizMenuPrincipal>
+    );
 }
 
 export default CreateQuiz;

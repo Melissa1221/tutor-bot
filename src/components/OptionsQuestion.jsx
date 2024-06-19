@@ -1,10 +1,9 @@
 /* eslint-disable no-dupe-keys */
 /* eslint-disable react/prop-types */
 
-import {  Radio, FormControlLabel, Paper, RadioGroup } from '@mui/material';
+import { Radio, FormControlLabel, Paper, RadioGroup } from '@mui/material';
 
-
-const OptionsQuestion = ({ questions, selectedAnswer, onAnswerChange }) => {
+const OptionsQuestion = ({ options, selectedAnswer, onAnswerChange }) => {
   const handleRadioChange = (event) => {
     onAnswerChange(event.target.value);
   };
@@ -13,18 +12,17 @@ const OptionsQuestion = ({ questions, selectedAnswer, onAnswerChange }) => {
     <Paper sx={{ 
       padding: '1rem',
       borderRadius: '10px', 
-      background:'rgb(139,204,204)',
-      background: 'linear-gradient(99deg, rgba(139,204,204,1) 0%, rgba(69,102,102,1) 100%)' , 
-      width:'80%',
-      textAlign:'left',
-      }}>
+      background: 'linear-gradient(99deg, rgba(139,204,204,1) 0%, rgba(69,102,102,1) 100%)', 
+      width: '80%',
+      textAlign: 'left',
+    }}>
       <RadioGroup value={selectedAnswer} onChange={handleRadioChange}>
-        {questions.map((question, index) => (
+        {options.map((option, index) => (
           <FormControlLabel
             key={index}
-            value={index.toString()}
+            value={index.toString()}  // Cambiado a índice
             control={<Radio />}
-            label={question.text}
+            label={option}
           />
         ))}
       </RadioGroup>

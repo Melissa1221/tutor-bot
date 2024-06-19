@@ -7,6 +7,7 @@ import Chatbot from './pages/Chatbot';
 import Quiz from './pages/Quiz';
 import Historial from './pages/Historial';
 import CreateQuiz from './pages/CreateQuiz';
+import Score from './pages/Score';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/quiz" element={<Quiz />} />
         <Route path='/history' element={<Historial />} />
         <Route path = '/createquiz' element = {<CreateQuiz/>}/>
+        <Route path = '/score' element = {<Score/>}/>
       </Routes>
     </Router>
   );

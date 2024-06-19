@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
-import { Typography, Box } from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 
 const TimerQuiz = ({ initialTime, onTimeUp }) => {
   const [time, setTime] = useState(initialTime);

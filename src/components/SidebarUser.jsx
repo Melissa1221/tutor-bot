@@ -1,6 +1,5 @@
 
 import { styled } from '@mui/material/styles';
-import { Box, Typography } from '@mui/material';
 import userPhoto from '../assets/images/userPhoto.png';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -8,6 +7,9 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import HeadphonesIcon from '@mui/icons-material/Headphones';
 import { Link } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 
 const SidebarContainer = styled('div')(({ theme }) => ({
 display: 'flex',

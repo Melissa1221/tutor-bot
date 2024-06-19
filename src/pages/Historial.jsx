@@ -37,7 +37,7 @@ const Historial = () => {
     useEffect(() => {
         const fetchQuestionnaires = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/v1/questionnaires/all/1');
+                const response = await axios.get(`${import.meta.env.VITE_REACT_API_URL}/api/v1/questionnaires/all/1`);
 
                 if (response.status === 200) {
                     setQuestionaries(response.data.questionnaires);

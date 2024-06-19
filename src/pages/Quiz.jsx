@@ -119,7 +119,7 @@ const Quiz = () => {
         const score = calculateGrade(questions, userAnswers);
         
         try {
-            const response = await axios.post(`http://localhost:8000/api/v1/questionnaires/${questionnaire_id}/score`, {
+            const response = await axios.put(`${import.meta.env.VITE_REACT_API_URL}/api/v1/questionnaires/${questionnaire_id}/score`, {
                 score: score
             }, {
                 headers: {

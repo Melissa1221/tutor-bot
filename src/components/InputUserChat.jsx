@@ -28,7 +28,7 @@ const InputUserChat = ({ onSendMessage }) => {
     if (newMessage.trim()) {
       setNewMessage('');
       try {
-        const response = await axios.post('http://localhost:8000/api/v1/bot/ask', {
+        const response = await axios.post(`${import.meta.env.VITE_REACT_API_URL}/api/v1/bot/ask`, {
            question: newMessage
         }, {
             headers: {

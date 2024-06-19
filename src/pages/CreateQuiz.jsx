@@ -74,7 +74,7 @@ const CreateQuiz = () => {
 
     const handleSubmit = async () => {
         try {
-            const response = await axios.post('http://localhost:8000/api/v1/questionnaires/create', {
+            const response = await axios.post(`${import.meta.env.VITE_REACT_API_URL}/api/v1/questionnaires/create`, {
                 topic: topic,
                 num_preg: parseInt(numPreguntas)
             }, {

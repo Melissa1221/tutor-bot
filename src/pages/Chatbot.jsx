@@ -2,7 +2,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import imageChatbot from '../assets/images/chatbotImage.png'
-import { Typography , Container, Button} from '@mui/material'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button' 
+import Container from '@mui/material/Container'
 import ChatbotInteraction from '../components/ChatbotInteraction'
 import Navbar from '../components/NavbarEbooks'
 

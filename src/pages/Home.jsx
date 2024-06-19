@@ -3,7 +3,7 @@
 import styled from 'styled-components'
 import logo from '../assets/images/logoTutorBot.png'
 import { Link } from 'react-router-dom';
-import { Typography } from '@mui/material'
+import Typography from '@mui/material/Typography'
 
 
 const ContainerHome = styled('div')({

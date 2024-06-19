@@ -1,6 +1,5 @@
-/* eslint-disable no-undef */
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import Navbar from '../components/NavbarEbooks';
@@ -63,6 +62,7 @@ const InputStyled = styled('input')({
 const CreateQuiz = () => {
     const [tema, setTema] = useState('');
     const [numPreguntas, setNumPreguntas] = useState('');
+    const navigate = useNavigate();
 
     const handleTemaChange = (event) => {
         setTema(event.target.value);
@@ -85,6 +85,7 @@ const CreateQuiz = () => {
 
             if (response.status === 200) {
                 console.log('Quiz creado:', response.data);
+                navigate('/quiz', { state: { tema } });
             } else {
                 console.error('Error al crear el quiz');
             }
@@ -111,8 +112,9 @@ const CreateQuiz = () => {
                     onChange={handleNumPreguntasChange}
                 />
                 <Link to='/quiz'>
-                    <ButtonStyled onClick={handleSubmit}>Crear Quiz</ButtonStyled>
+                  <ButtonStyled onClick={handleSubmit}>Crear Quiz</ButtonStyled>
                 </Link>
+                
             </CustomContainer>
         </ContainerQuizMenuPrincipal>
     );

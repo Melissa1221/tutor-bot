@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { Box, Container, Typography } from '@mui/material';
 import { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 import OptionsQuestion from '../components/OptionsQuestion';
@@ -65,6 +65,8 @@ const ButtonDiv = styled(Box)({
 
 const Quiz = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const { tema } = location.state || { tema: 'Quiz' }; // Default to 'Quiz' if tema is not provided
     const [questions] = useState([
         {
             question: '¿Cuál es el resultado de ejecutar el siguiente código en Java?',
@@ -134,7 +136,8 @@ const Quiz = () => {
 
     const submitAnswers = useCallback(() => {
         const grade = calculateGrade(questions, userAnswers);
-        navigate('/score', { state: { grade } });
+        console.log(`Tema: ${tema}, Calificación: ${grade}`); // Log para depuración
+        navigate('/history', { state: { tema, grade } });
     });
 
     useEffect(() => {
@@ -152,7 +155,7 @@ const Quiz = () => {
             <LogoDiv>
                 <Navbar page='Regresar' route='/principalmenu' />
                 <Image src={imageChatbot} alt='logo tutor bot' />
-                <Typography variant='h3' sx={{ fontFamily: 'Lily Script One' }}>Tutor Bot</Typography>
+                <Typography variant='h3' sx={{ fontFamily: 'Lily Script One' }}>{tema}</Typography>
                 <TimerQuiz initialTime={60} onTimeUp={handleTimeUp} />
                 <CircularProgressWithLabel value={progress} />
             </LogoDiv>

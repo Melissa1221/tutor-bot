@@ -1,6 +1,8 @@
-import styled from "styled-components"
-import CardHistotial from "../components/CardHistotial"
-import Navbar from "../components/NavbarEbooks"
+import { useLocation } from 'react-router-dom';
+import styled from 'styled-components';
+import CardHistotial from '../components/CardHistotial';
+import Navbar from '../components/NavbarEbooks';
+
 const ContainerCustom = styled('div')({
     display: 'flex',
     justifyContent: 'flex-start',
@@ -10,7 +12,7 @@ const ContainerCustom = styled('div')({
     backgroundColor: 'var(--secondary-color)',
     padding: '0',
     margin: '0',
-})
+});
 
 const HistorialContent = styled('div')({
     display: 'flex',
@@ -23,17 +25,21 @@ const HistorialContent = styled('div')({
     padding: '0',
     margin: '0',
     gap: '20px',
-})
-const Historial = () => {
-  return (
-    <ContainerCustom>
-        <HistorialContent>
-            <Navbar page='Regresar' route="/principalmenu"/>
-            <h2>Exámenes recientes</h2>
-            <CardHistotial tema='Recursividad' score='20'/>
-        </HistorialContent>
-    </ContainerCustom>
-  )
-}
+});
 
-export default Historial
+const Historial = () => {
+    const location = useLocation();
+    const { tema, grade } = location.state || { tema: 'Sin tema', grade: 0 };
+
+    return (
+        <ContainerCustom>
+            <HistorialContent>
+                <Navbar page='Regresar' route='/principalmenu' />
+                <h2>Exámenes recientes</h2>
+                <CardHistotial tema={tema} score={grade} />
+            </HistorialContent>
+        </ContainerCustom>
+    );
+};
+
+export default Historial;

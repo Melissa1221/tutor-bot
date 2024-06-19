@@ -1,6 +1,5 @@
 import  { useState } from 'react';
 import styled from 'styled-components';
-import Container from '@mui/material/Container';
 import imageChatbot from '../assets/images/chatbotImage.png';
 import Navbar from '../components/NavbarEbooks';
 import Typography from '@mui/material/Typography';

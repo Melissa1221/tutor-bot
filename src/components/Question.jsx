@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 
-import styled from 'styled-components'
-import { Box, Typography } from '@mui/material'
+import styled from 'styled-components';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 const CustomBox = styled(Box)({
     display: 'flex',

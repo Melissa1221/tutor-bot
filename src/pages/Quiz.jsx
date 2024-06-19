@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { Box, Container, Typography } from '@mui/material'
+import Container from '@mui/material/Container'
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 import React from 'react'
 import styled from 'styled-components'
